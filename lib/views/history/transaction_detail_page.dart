@@ -1,7 +1,7 @@
 // lib/views/history/transaction_detail_page.dart
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-import 'package:bsi_merchant_busines_1/viewmodels/transaction/transaction.dart';
+import '../../viewmodels/transaction/transaction.dart';
 import '../refund/refund_transaction_page.dart';
 
 class TransactionDetailPage extends StatelessWidget {

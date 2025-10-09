@@ -1,4 +1,4 @@
-name: bsi_merchant_busines_1
+name: bsi_merchant_bussiness_proto
 description: "A new Flutter project."
 # The following line prevents the package from being accidentally published to
 # pub.dev using `flutter pub publish`. This is preferred for private packages.
@@ -35,6 +35,12 @@ dependencies:
   shared_preferences: ^2.3.2
   qr_flutter: ^4.1.0
   confetti: ^0.7.0
+  dio: ^5.4.0
+  file_saver: ^0.2.9
+  open_filex: ^4.3.2
+  path_provider: ^2.1.3
+  share_plus: ^10.0.0
+  cross_file: ^0.3.4
   flutter_localizations:
     sdk: flutter
 

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'views/login/splash_screen.dart'; // sesuaikan path
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:bsi_merchant_busines_1/viewmodels/transaction/transaction_repository.dart';
-import 'package:bsi_merchant_busines_1/viewmodels/transaction/transaction.dart';
+import 'package:bsi_merchant_bussiness_proto/viewmodels/transaction/transaction_repository.dart';
+import 'package:bsi_merchant_bussiness_proto/viewmodels/transaction/transaction.dart';
 void main() {
   // main.dart
   final repo = TransactionRepository();

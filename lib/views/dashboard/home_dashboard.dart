@@ -4,6 +4,8 @@ import 'package:intl/date_symbol_data_local.dart';
 import '../settings/settings_page.dart';
 import '../history/transaction_history_page.dart';
 import '../transaction/qris_transaction_page.dart';
+import '../report/download_report_page.dart';
+
 
 class HomeDashboard extends StatefulWidget {
   const HomeDashboard({super.key});
@@ -244,7 +246,14 @@ class _HomeDashboardState extends State<HomeDashboard> {
               _buildGridMenuItem(
                 iconPath: 'assets/Icons/Menu Unduh Laporan.png',
                 label: 'Unduh Laporan',
-                onTap: () => print('Unduh Laporan diklik!'),
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => DownloadReportPage(),
+                    )
+                  );
+                }
               ),
             ],
           ),

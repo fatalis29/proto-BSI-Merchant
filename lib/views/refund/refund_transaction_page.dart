@@ -1,7 +1,7 @@
 // lib/views/refund/refund_transaction_page.dart
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-import 'package:bsi_merchant_busines_1/viewmodels/transaction/transaction.dart';
+import '../../viewmodels/transaction/transaction.dart';
 import 'confirm_refund_page.dart';
 
 class RefundTransactionPage extends StatefulWidget {
@@ -18,7 +18,7 @@ class _RefundTransactionPageState extends State<RefundTransactionPage> {
   int? _refundAmount;
 
   String _formatRupiah(int amount) =>
-      "Rp ${NumberFormat('#,###', 'id_ID').format(amount)}";
+      "Rp ${NumberFormat('#,###', 'id_ID').format(amount)}"; 
 
   bool get _isValidRefund {
     if (_refundAmount == null) return false;
