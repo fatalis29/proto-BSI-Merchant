@@ -49,7 +49,7 @@ class _LoginScreenState extends State<LoginScreen> {
 
               // 1️⃣ Logo di atas panel input
               Image.asset(
-                'assets/Icons/Logo login.png',
+                'Assets/Icons/Logo login.png',
                 width: 100,
               ),
 

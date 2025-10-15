@@ -102,7 +102,7 @@ class _HomeDashboardState extends State<HomeDashboard> {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Image.asset('assets/Icons/logo login.png', height: 50),
+          Image.asset('Assets/Icons/Logo login.png', height: 50),
           GestureDetector(
             onTap: () => Navigator.of(context).push(_settingsRoute()),
             child: Container(
@@ -158,7 +158,7 @@ class _HomeDashboardState extends State<HomeDashboard> {
             Align(
               alignment: Alignment.bottomLeft,
               child: Image.asset(
-                'assets/Icons/Vector 894 (Kuning).png',
+                'Assets/Icons/Vector 894 (Kuning).png',
                 fit: BoxFit.contain,
                 height: 120,
               ),
@@ -233,7 +233,7 @@ class _HomeDashboardState extends State<HomeDashboard> {
             childAspectRatio: 1.05,
             children: [
               _buildGridMenuItem(
-                iconPath: 'assets/Icons/Menu Riwayat Transaksi.png',
+                iconPath: 'Assets/Icons/Menu Riwayat Transaksi.png',
                 label: 'Riwayat Transaksi',
                 onTap: () {
                   Navigator.of(context).push(
@@ -244,7 +244,7 @@ class _HomeDashboardState extends State<HomeDashboard> {
                 },
               ),
               _buildGridMenuItem(
-                iconPath: 'assets/Icons/Menu Unduh Laporan.png',
+                iconPath: 'Assets/Icons/Menu Unduh Laporan.png',
                 label: 'Unduh Laporan',
                 onTap: () {
                   Navigator.push(
@@ -259,7 +259,7 @@ class _HomeDashboardState extends State<HomeDashboard> {
           ),
           const SizedBox(height: 16),
           _buildQrMenuItem(
-            iconPath: 'assets/Icons/Menu Qris.png',
+            iconPath: 'Assets/Icons/Menu Qris.png',
             label: 'Transaksi QRIS',
             onTap: () {
               Navigator.of(context).push(

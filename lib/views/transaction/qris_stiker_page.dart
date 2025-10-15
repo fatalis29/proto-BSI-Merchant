@@ -65,7 +65,7 @@ class QrisStikerPage extends StatelessWidget {
                 mainAxisSize: MainAxisSize.min,
                 children: [
                   Image.asset(
-                    "assets/Icons/qris_stiker.png",
+                    "Assets/Icons/qris_stiker.png",
                     width: 280,
                     height: 280,
                     fit: BoxFit.contain,

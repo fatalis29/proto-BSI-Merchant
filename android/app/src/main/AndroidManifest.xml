@@ -1,8 +1,17 @@
-<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.bsi_merchant_busines_1">
 
+    <!-- Internet untuk API call -->
     <uses-permission android:name="android.permission.INTERNET"/>
 
+    <!-- Opsional: hanya kalau masih support Android 10 ke bawah -->
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"
+        android:maxSdkVersion="29" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"
+        android:maxSdkVersion="32" />
+
     <application
+        android:requestLegacyExternalStorage="true"
         android:label="bsi_merchant_busines_1"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">

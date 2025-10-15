@@ -3,8 +3,19 @@ import 'views/login/splash_screen.dart'; // sesuaikan path
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:bsi_merchant_bussiness_proto/viewmodels/transaction/transaction_repository.dart';
 import 'package:bsi_merchant_bussiness_proto/viewmodels/transaction/transaction.dart';
-void main() {
-  // main.dart
+import 'package:media_store_plus/media_store_plus.dart'; // ✅ tambahkan import
+
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+
+  // ✅ Inisialisasi MediaStore sekali di awal
+  await MediaStore.ensureInitialized();
+
+  // ✅ Set folder default untuk aplikasi
+  // Akan membuat subfolder di Download/BSI_Merchant
+  MediaStore.appFolder = "BSI_Merchant";
+
+  // Dummy repo untuk histori transaksi
   final repo = TransactionRepository();
 
   // Seed data awal
@@ -29,7 +40,6 @@ void main() {
 
   runApp(const MyApp());
 }
-
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});

@@ -140,7 +140,7 @@ class _TransactionHistoryPageState extends State<TransactionHistoryPage> {
                     ),
                     const SizedBox(width: 16),
                     Image.asset(
-                      'assets/Icons/Vector 894 (Stroke)(side).png',
+                      'Assets/Icons/Vector 894 (Stroke)(side).png',
                       height: 45,
                       fit: BoxFit.contain,
                     ),

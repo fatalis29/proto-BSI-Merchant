@@ -25,8 +25,9 @@ class _SplashScreenState extends State<SplashScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Stack(
+        fit: StackFit.expand, // Penting: Memastikan children mengisi penuh
         children: [
-          // 1️⃣ Background warna (gradient hijau toska light → medium)
+          // 1️⃣ Background gradient
           Container(
             decoration: const BoxDecoration(
               gradient: LinearGradient(
@@ -40,32 +41,19 @@ class _SplashScreenState extends State<SplashScreen> {
             ),
           ),
 
-          // 2️⃣ Background vector full width + bayangan
-          Align(
-            alignment: Alignment.center,
-            child: Container(
-              width: double.infinity, // penuh sampai tepi layar
-              decoration: BoxDecoration(
-                boxShadow: [
-                  BoxShadow(
-                    color: Colors.black.withOpacity(0.15), // bayangan tipis
-                    blurRadius: 8,
-                    offset: const Offset(0, 4),
-                  ),
-                ],
-              ),
-              child: Image.asset(
-                'assets/Icons/Vector 894 (Stroke).png',
-                fit: BoxFit.cover, // isi penuh lebar layar
-              ),
+          // 2️⃣ Background vector - TANPA Container wrapper
+          Positioned.fill(
+            child: Image.asset(
+              'Assets/Icons/Vector 894 (Stroke).png',
+              fit: BoxFit.cover, // Cover full screen
+              alignment: Alignment.center,
             ),
           ),
 
-          // 3️⃣ Logo di atas vector
-          Align(
-            alignment: Alignment.center,
+          // 3️⃣ Logo di tengah
+          Center(
             child: Image.asset(
-              'assets/Icons/Logo.png',
+              'Assets/Icons/Logo.png',
               width: 150,
             ),
           ),
