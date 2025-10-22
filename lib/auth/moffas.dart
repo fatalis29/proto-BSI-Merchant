@@ -2,15 +2,15 @@ import 'dart:convert';
 import 'dart:developer';
 
 import 'package:cryptography/cryptography.dart';
-import 'package:dbank/models/auth_response.dart';
+import '/models/auth_response.dart';
 import 'package:intl/intl.dart';
 
 final GS2_HEADER = 'n,,';
 
 int seq = 0;
 
-String c(String clientFirstMessage){
-  return base64Encode(utf8.encode(clientFirstMessage.substring(0,3)));   
+String c(){
+  return base64Encode(utf8.encode("n,,")); // hasilnya "biws"  
 }
 
 String getClientFirstMessage(String username, String saltFE) {
@@ -62,7 +62,7 @@ String getServerFirstMessage(AuthResponse authResponse) {
 }
 
 String getClientFinalMessageWithoutProve(String clientFirstMessage, AuthResponse authResponse) {
-  return "c=${c(clientFirstMessage)},r=${authResponse.r}";
+  return "c=${c()},r=${authResponse.r}";
 }
 
 String getAuthMessage(String clientFirstMessageBare, String serverFirstMessage, String clientFinalMessageWithoutProof) {
@@ -95,7 +95,8 @@ Future<String> p(String username, String password, String saltFE, AuthResponse a
   log('stored key ${Base64Codec().encode(storedKey.bytes)}');
   var clientFirstMessage = getClientFirstMessage(username, saltFE);
   log('client first message $clientFirstMessage');
-  var authMessage = getAuthMessage(clientFirstMessage, getServerFirstMessage(authResponse), getClientFinalMessageWithoutProve(clientFirstMessage, authResponse));
+  var clientFirstMessageBare = getClientFirstMessageBare(clientFirstMessage);
+  var authMessage = getAuthMessage(clientFirstMessageBare, getServerFirstMessage(authResponse), getClientFinalMessageWithoutProve(clientFirstMessage, authResponse));
   log('auth message $authMessage');
   var clientSignature = await getClientSignature(storedKey, authMessage);
   log('client signature ${Base64Codec().encode(clientSignature)}');
@@ -106,8 +107,8 @@ Future<String> p(String username, String password, String saltFE, AuthResponse a
   return clientProofb64;
 }
 
-Future<String> getDataFin(String clientFirstMessage, AuthResponse authResponse) async {
-  return "c=${c(clientFirstMessage)},r=${authResponse.r},p=${await p('0000552027', '123456', 'e45RyNKtIcbk3RbI', authResponse)}";
+Future<String> getDataFin(String username, String password, String clientNonce, AuthResponse authResponse) async {
+  return "c=${c()},r=${authResponse.r},p=${await p(username, password, clientNonce, authResponse)}";
 }
 
 String getSequence() {
@@ -148,15 +149,20 @@ Future<SecretKey> getAesk(String saltedPassword, String r, {int iteration = 4096
   );
 
   log('get aesk');
+  List<int> nonceBytes;
+  try {
+    nonceBytes = Base64Codec().decode(r);
+  } catch (_) {
+    nonceBytes = utf8.encode(r);
+  }
 
   final newAesk = await pbkdf2.deriveKeyFromPassword(
     password: saltedPassword,
-    nonce: Base64Codec().decode(r),
+    nonce: nonceBytes,
   );
 
   final newAeskString = Base64Codec().encode(await newAesk.extractBytes());
-
-  log(newAeskString);
+  log('derived AESK: $newAeskString');
 
   return newAesk;
 }
@@ -169,9 +175,7 @@ Future<String> getHash(String payload, String sequence, SecretKey aesk) async {
   );
 
   final hashString = Base64Codec().encode(mac.bytes);
-
   log(hashString);
-
   return hashString;
 }
 

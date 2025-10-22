@@ -1,7 +1,7 @@
 
 import 'dart:developer';
 
-import 'package:dbank/utilities/utilities.dart';
+import '/utilities/utilities.dart';
 import 'package:dio/dio.dart';
 
 class AuthInterceptor extends Interceptor {
@@ -24,7 +24,7 @@ class AuthInterceptor extends Interceptor {
       'Bdi-Key': 'a6961472-a2da-4d91-a2bb-8ff009844eee',
       'Url': url
     });
-
+    
     return super.onRequest(options, handler);
   }
 }
